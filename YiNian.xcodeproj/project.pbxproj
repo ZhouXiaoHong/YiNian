@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		419523811B95E403005F7958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523801B95E403005F7958 /* AppDelegate.swift */; };
-		419523831B95E403005F7958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523821B95E403005F7958 /* ViewController.swift */; };
+		4121E4B31B974B4200845CE9 /* YNNian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121E4B21B974B4200845CE9 /* YNNian.swift */; };
+		4121E4B51B974DB200845CE9 /* YNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4121E4B41B974DB200845CE9 /* YNTableViewCell.swift */; };
 		419523861B95E403005F7958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419523841B95E403005F7958 /* Main.storyboard */; };
 		419523881B95E403005F7958 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419523871B95E403005F7958 /* Images.xcassets */; };
 		4195238B1B95E403005F7958 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419523891B95E403005F7958 /* LaunchScreen.xib */; };
 		419523971B95E403005F7958 /* YiNianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523961B95E403005F7958 /* YiNianTests.swift */; };
+		419523A31B95E76A005F7958 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 419523A21B95E76A005F7958 /* libsqlite3.dylib */; };
+		419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523A61B95F6B7005F7958 /* ViewController.swift */; };
+		419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523A91B95F6B7005F7958 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +29,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4121E4B21B974B4200845CE9 /* YNNian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YNNian.swift; path = ../../../../../YNNian.swift; sourceTree = "<group>"; };
+		4121E4B41B974DB200845CE9 /* YNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTableViewCell.swift; sourceTree = "<group>"; };
 		4195237B1B95E403005F7958 /* YiNian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiNian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4195237F1B95E403005F7958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		419523801B95E403005F7958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		419523821B95E403005F7958 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		419523851B95E403005F7958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		419523871B95E403005F7958 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4195238A1B95E403005F7958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		419523901B95E403005F7958 /* YiNianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiNianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		419523951B95E403005F7958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		419523961B95E403005F7958 /* YiNianTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YiNianTests.swift; sourceTree = "<group>"; };
+		419523A21B95E76A005F7958 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		419523A61B95F6B7005F7958 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		419523A91B95F6B7005F7958 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419523A31B95E76A005F7958 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4121E4AF1B974AFC00845CE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4121E4B41B974DB200845CE9 /* YNTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		419523721B95E403005F7958 = {
 			isa = PBXGroup;
 			children = (
@@ -77,11 +92,7 @@
 		4195237D1B95E403005F7958 /* YiNian */ = {
 			isa = PBXGroup;
 			children = (
-				419523801B95E403005F7958 /* AppDelegate.swift */,
-				419523821B95E403005F7958 /* ViewController.swift */,
-				419523841B95E403005F7958 /* Main.storyboard */,
-				419523871B95E403005F7958 /* Images.xcassets */,
-				419523891B95E403005F7958 /* LaunchScreen.xib */,
+				419523A41B95F6B7005F7958 /* Class */,
 				4195237E1B95E403005F7958 /* Supporting Files */,
 			);
 			path = YiNian;
@@ -90,6 +101,10 @@
 		4195237E1B95E403005F7958 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				419523A21B95E76A005F7958 /* libsqlite3.dylib */,
+				419523841B95E403005F7958 /* Main.storyboard */,
+				419523871B95E403005F7958 /* Images.xcassets */,
+				419523891B95E403005F7958 /* LaunchScreen.xib */,
 				4195237F1B95E403005F7958 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -110,6 +125,41 @@
 				419523951B95E403005F7958 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		419523A41B95F6B7005F7958 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				419523A51B95F6B7005F7958 /* Controller */,
+				419523A71B95F6B7005F7958 /* Model */,
+				4121E4AF1B974AFC00845CE9 /* View */,
+				419523A81B95F6B7005F7958 /* Other */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		419523A51B95F6B7005F7958 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				419523A61B95F6B7005F7958 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		419523A71B95F6B7005F7958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4121E4B21B974B4200845CE9 /* YNNian.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		419523A81B95F6B7005F7958 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				419523A91B95F6B7005F7958 /* AppDelegate.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +206,7 @@
 		419523731B95E403005F7958 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YN;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Mars;
 				TargetAttributes = {
@@ -212,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419523831B95E403005F7958 /* ViewController.swift in Sources */,
-				419523811B95E403005F7958 /* AppDelegate.swift in Sources */,
+				419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */,
+				4121E4B31B974B4200845CE9 /* YNNian.swift in Sources */,
+				4121E4B51B974DB200845CE9 /* YNTableViewCell.swift in Sources */,
+				419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -329,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -409,6 +462,7 @@
 				4195239C1B95E403005F7958 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4195239D1B95E403005F7958 /* Build configuration list for PBXNativeTarget "YiNianTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +471,7 @@
 				4195239F1B95E403005F7958 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
