@@ -24,7 +24,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.yellowColor()
-        tableView.bounces = false
         return tableView
     }()
     
@@ -36,26 +35,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         pan.delegate = self
         tableView.panGestureRecognizer.requireGestureRecognizerToFail(pan)
         tableView.addGestureRecognizer(pan)
-        view.addSubview(editView)
         view.addSubview(tableView)
+        view.addSubview(editView)
     }
     
     func pan(recognizer: UIPanGestureRecognizer) {
-//        print("haha")
-//        editView.frame.size.height = recognizer.translationInView(view).y
-//        if recognizer.state == UIGestureRecognizerState.Ended {
-//            if editView.frame.height > 200 {
-//                UIView.animateWithDuration(0.5, animations: { () -> Void in
-//                    // 循环引用
-//                    self.editView.frame.size.height = self.view.frame.height
-//                })
-//            } else {
-//                UIView.animateWithDuration(0.5, animations: { () -> Void in
-//                    // 循环引用
-//                    self.editView.frame.size.height = 0
-//                })
-//            }
-//        }
+        if recognizer.translationInView(view).y > 0 {
+            editView.frame.size.height = recognizer.translationInView(view).y
+        }
+        if recognizer.state == UIGestureRecognizerState.Ended {
+            if editView.frame.height > 200 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    // 循环引用
+                    self.editView.frame.size.height = self.view.frame.height
+                })
+            } else {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    // 循环引用
+                    self.editView.frame.size.height = 0
+                })
+            }
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,8 +67,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        print("haha")
-        return self.tableView.contentOffset.y == 0
+        println(touch.locationInView(view).y)
+        return touch.locationInView(view).y < 150
     }
     
 }

@@ -2,7 +2,7 @@
 //  YNTableViewCell.swift
 //  YiNian
 //
-//  Created by 宏周 on 15/9/2.
+//  Created by 宏周 on 15/9/3.
 //  Copyright (c) 2015年 Mars. All rights reserved.
 //
 
@@ -21,8 +21,4 @@ class YNTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        <#code#>
-    }
-
 }
