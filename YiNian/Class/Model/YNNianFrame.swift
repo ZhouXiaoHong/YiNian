@@ -9,16 +9,16 @@
 import UIKit
 
 class YNNianFrame {
- /// 模型
-    let nian: YNNian
- /// 顺序
-    var index: Int?
-    
-    var textF: CGRect
-    var dateF: CGRect
-    var picF: CGRect
-    
-    init(nian: YNNian) {
-        self.nian = nian
-    }
+// /// 模型
+//    let nian: YNNian
+// /// 顺序
+//    var index: Int?
+//    
+//    var textF: CGRect
+//    var dateF: CGRect
+//    var picF: CGRect
+//    
+//    init(nian: YNNian) {
+//        self.nian = nian
+//    }
 }
