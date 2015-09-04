@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22275A8E24F96AB0381ED444 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8651A0774E5FDBDF384972 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4157E2CA1B97C92F00C140C2 /* YNNian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2C91B97C92F00C140C2 /* YNNian.swift */; };
-		4157E2CC1B97C93D00C140C2 /* YNTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2CB1B97C93D00C140C2 /* YNTableView.swift */; };
 		4157E2CE1B97C9E700C140C2 /* YNNianFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2CD1B97C9E700C140C2 /* YNNianFrame.swift */; };
 		4157E2FF1B97E59C00C140C2 /* YNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */; };
-		4157E3001B97E59C00C140C2 /* YNTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4157E2FE1B97E59C00C140C2 /* YNTableViewCell.xib */; };
 		419523861B95E403005F7958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419523841B95E403005F7958 /* Main.storyboard */; };
 		419523881B95E403005F7958 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419523871B95E403005F7958 /* Images.xcassets */; };
 		4195238B1B95E403005F7958 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419523891B95E403005F7958 /* LaunchScreen.xib */; };
@@ -19,6 +18,10 @@
 		419523A31B95E76A005F7958 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 419523A21B95E76A005F7958 /* libsqlite3.dylib */; };
 		419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523A61B95F6B7005F7958 /* ViewController.swift */; };
 		419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523A91B95F6B7005F7958 /* AppDelegate.swift */; };
+		D4CA96971B9813660038FED3 /* haha.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CA96961B9813660038FED3 /* haha.png */; };
+		D4FE93B31B99142C002CA4FC /* YNDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93B21B99142C002CA4FC /* YNDBTool.swift */; };
+		D4FE93B91B992D1B002CA4FC /* YNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93B81B992D1B002CA4FC /* YNTextView.swift */; };
+		D4FE93BD1B992D3F002CA4FC /* YNTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FE93BC1B992D3F002CA4FC /* YNTextView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,10 +36,8 @@
 
 /* Begin PBXFileReference section */
 		4157E2C91B97C92F00C140C2 /* YNNian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNNian.swift; sourceTree = "<group>"; };
-		4157E2CB1B97C93D00C140C2 /* YNTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTableView.swift; sourceTree = "<group>"; };
 		4157E2CD1B97C9E700C140C2 /* YNNianFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNNianFrame.swift; sourceTree = "<group>"; };
 		4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTableViewCell.swift; sourceTree = "<group>"; };
-		4157E2FE1B97E59C00C140C2 /* YNTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNTableViewCell.xib; sourceTree = "<group>"; };
 		4195237B1B95E403005F7958 /* YiNian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiNian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4195237F1B95E403005F7958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		419523851B95E403005F7958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +49,13 @@
 		419523A21B95E76A005F7958 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		419523A61B95F6B7005F7958 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		419523A91B95F6B7005F7958 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4FA74DC9D503B4F1708ED75B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9F2DC78307BBACF4B06C9D5D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D4CA96961B9813660038FED3 /* haha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haha.png; sourceTree = "<group>"; };
+		D4FE93B21B99142C002CA4FC /* YNDBTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNDBTool.swift; sourceTree = "<group>"; };
+		D4FE93B81B992D1B002CA4FC /* YNTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTextView.swift; sourceTree = "<group>"; };
+		D4FE93BC1B992D3F002CA4FC /* YNTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNTextView.xib; sourceTree = "<group>"; };
+		DE8651A0774E5FDBDF384972 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				419523A31B95E76A005F7958 /* libsqlite3.dylib in Frameworks */,
+				22275A8E24F96AB0381ED444 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +81,10 @@
 		4121E4AF1B974AFC00845CE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4157E2CB1B97C93D00C140C2 /* YNTableView.swift */,
 				4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */,
-				4157E2FE1B97E59C00C140C2 /* YNTableViewCell.xib */,
+				D4CA96961B9813660038FED3 /* haha.png */,
+				D4FE93B81B992D1B002CA4FC /* YNTextView.swift */,
+				D4FE93BC1B992D3F002CA4FC /* YNTextView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -94,6 +104,8 @@
 				4195237D1B95E403005F7958 /* YiNian */,
 				419523931B95E403005F7958 /* YiNianTests */,
 				4195237C1B95E403005F7958 /* Products */,
+				AA5C18E93DC5002C2307330C /* Pods */,
+				8B288BB5DF5AD42E73D22753 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +163,7 @@
 				4157E2C81B97C92F00C140C2 /* Model */,
 				4121E4AF1B974AFC00845CE9 /* View */,
 				419523A81B95F6B7005F7958 /* Other */,
+				D4FE93B11B991400002CA4FC /* Tool */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -171,6 +184,31 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		8B288BB5DF5AD42E73D22753 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE8651A0774E5FDBDF384972 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA5C18E93DC5002C2307330C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F2DC78307BBACF4B06C9D5D /* Pods.debug.xcconfig */,
+				4FA74DC9D503B4F1708ED75B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D4FE93B11B991400002CA4FC /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D4FE93B21B99142C002CA4FC /* YNDBTool.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4195239A1B95E403005F7958 /* Build configuration list for PBXNativeTarget "YiNian" */;
 			buildPhases = (
+				03FC36AD9104E784F35B0FE8 /* Check Pods Manifest.lock */,
 				419523771B95E403005F7958 /* Sources */,
 				419523781B95E403005F7958 /* Frameworks */,
 				419523791B95E403005F7958 /* Resources */,
+				52BE058C463F32A9165CC08F /* Embed Pods Frameworks */,
+				8BC77D9FF1F70677B377986F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,8 +295,9 @@
 			files = (
 				419523861B95E403005F7958 /* Main.storyboard in Resources */,
 				4195238B1B95E403005F7958 /* LaunchScreen.xib in Resources */,
-				4157E3001B97E59C00C140C2 /* YNTableViewCell.xib in Resources */,
 				419523881B95E403005F7958 /* Images.xcassets in Resources */,
+				D4CA96971B9813660038FED3 /* haha.png in Resources */,
+				D4FE93BD1B992D3F002CA4FC /* YNTextView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,16 +310,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03FC36AD9104E784F35B0FE8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52BE058C463F32A9165CC08F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BC77D9FF1F70677B377986F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		419523771B95E403005F7958 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FE93B91B992D1B002CA4FC /* YNTextView.swift in Sources */,
 				4157E2CA1B97C92F00C140C2 /* YNNian.swift in Sources */,
 				419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */,
+				D4FE93B31B99142C002CA4FC /* YNDBTool.swift in Sources */,
 				4157E2FF1B97E59C00C140C2 /* YNTableViewCell.swift in Sources */,
 				4157E2CE1B97C9E700C140C2 /* YNNianFrame.swift in Sources */,
-				4157E2CC1B97C93D00C140C2 /* YNTableView.swift in Sources */,
 				419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -394,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -403,9 +494,11 @@
 		};
 		4195239B1B95E403005F7958 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2DC78307BBACF4B06C9D5D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YiNian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -413,9 +506,11 @@
 		};
 		4195239C1B95E403005F7958 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FA74DC9D503B4F1708ED75B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YiNian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

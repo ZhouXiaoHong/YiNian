@@ -11,16 +11,16 @@ import UIKit
 class YNNian {
     var date: NSDate
     var text: String
-    var picture: String?
+    var pic: String?
     var strDate: String {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MMddHHmm"
         return formatter.stringFromDate(date)
     }
     
-    init(date: NSDate, text: String, picture: String?) {
+    init(date: NSDate, text: String, pic: String?) {
         self.date = date
         self.text = text
-        self.picture = picture
+        self.pic = pic
     }
 }
