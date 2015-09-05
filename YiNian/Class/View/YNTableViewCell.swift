@@ -53,6 +53,8 @@ class YNTableViewCell: UITableViewCell {
         self.addSubview(contentLabel)
         self.addSubview(timeLabel)
         self.addSubview(pic)
+        
+        self.selectionStyle = UITableViewCellSelectionStyle.None
     }
     
     required init(coder aDecoder: NSCoder) {

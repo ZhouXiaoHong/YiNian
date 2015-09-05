@@ -22,6 +22,8 @@ class YNTextView: UIView, UITextViewDelegate {
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 5
 //        textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "presentImagePickerSheet:")
+        self.addGestureRecognizer(tapRecognizer)
     }
     
     // MARK: - Text view delegate

@@ -24,6 +24,14 @@
 		D4FE93B31B99142C002CA4FC /* YNDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93B21B99142C002CA4FC /* YNDBTool.swift */; };
 		D4FE93B91B992D1B002CA4FC /* YNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93B81B992D1B002CA4FC /* YNTextView.swift */; };
 		D4FE93BD1B992D3F002CA4FC /* YNTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FE93BC1B992D3F002CA4FC /* YNTextView.xib */; };
+		D4FE94071B9A886E002CA4FC /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93FC1B9A886E002CA4FC /* AnimationController.swift */; };
+		D4FE94081B9A886E002CA4FC /* ImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93FD1B9A886E002CA4FC /* ImageAction.swift */; };
+		D4FE94091B9A886E002CA4FC /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93FE1B9A886E002CA4FC /* ImageCollectionViewCell.swift */; };
+		D4FE940A1B9A886E002CA4FC /* ImagePickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE93FF1B9A886E002CA4FC /* ImagePickerCollectionView.swift */; };
+		D4FE940B1B9A886E002CA4FC /* ImagePickerSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE94011B9A886E002CA4FC /* ImagePickerSheetController.swift */; };
+		D4FE940C1B9A886E002CA4FC /* ImagePreviewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE94021B9A886E002CA4FC /* ImagePreviewFlowLayout.swift */; };
+		D4FE940D1B9A886E002CA4FC /* ImagePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE94031B9A886E002CA4FC /* ImagePreviewTableViewCell.swift */; };
+		D4FE94101B9A886E002CA4FC /* PreviewSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FE94061B9A886E002CA4FC /* PreviewSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +67,15 @@
 		D4FE93B21B99142C002CA4FC /* YNDBTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNDBTool.swift; sourceTree = "<group>"; };
 		D4FE93B81B992D1B002CA4FC /* YNTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTextView.swift; sourceTree = "<group>"; };
 		D4FE93BC1B992D3F002CA4FC /* YNTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNTextView.xib; sourceTree = "<group>"; };
+		D4FE93FC1B9A886E002CA4FC /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
+		D4FE93FD1B9A886E002CA4FC /* ImageAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAction.swift; sourceTree = "<group>"; };
+		D4FE93FE1B9A886E002CA4FC /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		D4FE93FF1B9A886E002CA4FC /* ImagePickerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionView.swift; sourceTree = "<group>"; };
+		D4FE94001B9A886E002CA4FC /* ImagePickerSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerSheetController.h; sourceTree = "<group>"; };
+		D4FE94011B9A886E002CA4FC /* ImagePickerSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerSheetController.swift; sourceTree = "<group>"; };
+		D4FE94021B9A886E002CA4FC /* ImagePreviewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewFlowLayout.swift; sourceTree = "<group>"; };
+		D4FE94031B9A886E002CA4FC /* ImagePreviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewTableViewCell.swift; sourceTree = "<group>"; };
+		D4FE94061B9A886E002CA4FC /* PreviewSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewSupplementaryView.swift; sourceTree = "<group>"; };
 		DE8651A0774E5FDBDF384972 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +187,7 @@
 				4121E4AF1B974AFC00845CE9 /* View */,
 				419523A81B95F6B7005F7958 /* Other */,
 				D4FE93B11B991400002CA4FC /* Tool */,
+				D4FE93FA1B9A885B002CA4FC /* Lib */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -213,6 +231,30 @@
 				D4FE93B21B99142C002CA4FC /* YNDBTool.swift */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		D4FE93FA1B9A885B002CA4FC /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				D4FE93FB1B9A886E002CA4FC /* ImagePickerSheetController */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		D4FE93FB1B9A886E002CA4FC /* ImagePickerSheetController */ = {
+			isa = PBXGroup;
+			children = (
+				D4FE93FC1B9A886E002CA4FC /* AnimationController.swift */,
+				D4FE93FD1B9A886E002CA4FC /* ImageAction.swift */,
+				D4FE93FE1B9A886E002CA4FC /* ImageCollectionViewCell.swift */,
+				D4FE93FF1B9A886E002CA4FC /* ImagePickerCollectionView.swift */,
+				D4FE94001B9A886E002CA4FC /* ImagePickerSheetController.h */,
+				D4FE94011B9A886E002CA4FC /* ImagePickerSheetController.swift */,
+				D4FE94021B9A886E002CA4FC /* ImagePreviewFlowLayout.swift */,
+				D4FE94031B9A886E002CA4FC /* ImagePreviewTableViewCell.swift */,
+				D4FE94061B9A886E002CA4FC /* PreviewSupplementaryView.swift */,
+			);
+			path = ImagePickerSheetController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,13 +413,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4FE93B91B992D1B002CA4FC /* YNTextView.swift in Sources */,
+				D4FE94091B9A886E002CA4FC /* ImageCollectionViewCell.swift in Sources */,
+				D4FE940A1B9A886E002CA4FC /* ImagePickerCollectionView.swift in Sources */,
 				4157E2CA1B97C92F00C140C2 /* YNNian.swift in Sources */,
 				419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */,
+				D4FE94081B9A886E002CA4FC /* ImageAction.swift in Sources */,
+				D4FE940C1B9A886E002CA4FC /* ImagePreviewFlowLayout.swift in Sources */,
 				D4FE93B31B99142C002CA4FC /* YNDBTool.swift in Sources */,
 				41913F941B999786002F44D5 /* YNTimeView.swift in Sources */,
 				4157E2FF1B97E59C00C140C2 /* YNTableViewCell.swift in Sources */,
+				D4FE94071B9A886E002CA4FC /* AnimationController.swift in Sources */,
+				D4FE940B1B9A886E002CA4FC /* ImagePickerSheetController.swift in Sources */,
+				D4FE940D1B9A886E002CA4FC /* ImagePreviewTableViewCell.swift in Sources */,
 				4157E2CE1B97C9E700C140C2 /* YNNianFrame.swift in Sources */,
 				419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */,
+				D4FE94101B9A886E002CA4FC /* PreviewSupplementaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
