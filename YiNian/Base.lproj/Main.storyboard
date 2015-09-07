@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
@@ -16,8 +15,54 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v0Z-Vt-fG4" customClass="YNTableView" customModule="YiNian" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="EqV-oS-0MW"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="NqN-ri-uGp"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OqT-Cw-qr4" userLabel="Super Text View" customClass="YNTextView" customModule="YiNian" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-580" width="600" height="600"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Time is life." translatesAutoresizingMaskIntoConstraints="NO" id="h8D-ZK-YiL">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="OqT-Cw-qr4" id="jhW-1N-4jL"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="h8D-ZK-YiL" secondAttribute="trailing" id="8BG-IY-vRQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="h8D-ZK-YiL" secondAttribute="bottom" id="F21-PZ-FRu"/>
+                                    <constraint firstItem="h8D-ZK-YiL" firstAttribute="leading" secondItem="OqT-Cw-qr4" secondAttribute="leading" id="OAx-Eg-dJW"/>
+                                    <constraint firstItem="h8D-ZK-YiL" firstAttribute="top" secondItem="OqT-Cw-qr4" secondAttribute="top" id="uWe-NB-qHr"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="textView" destination="h8D-ZK-YiL" id="Alg-CO-BkJ"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OqT-Cw-qr4" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="77A-W0-I5L"/>
+                            <constraint firstItem="OqT-Cw-qr4" firstAttribute="bottom" secondItem="jyV-Pf-zRb" secondAttribute="top" id="Nvp-4g-j54"/>
+                            <constraint firstItem="OqT-Cw-qr4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eMu-pl-JzQ"/>
+                            <constraint firstItem="OqT-Cw-qr4" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="jfd-qD-hYA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="v0Z-Vt-fG4" id="s4I-5n-DkG"/>
+                        <outlet property="textView" destination="OqT-Cw-qr4" id="J2V-bo-Zfq"/>
+                        <outlet property="textViewY" destination="Nvp-4g-j54" id="hcL-Yo-rOd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

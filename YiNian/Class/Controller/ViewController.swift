@@ -11,61 +11,47 @@ import Photos
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, YNTextViewDelegate {
     
+    /// 列表试图
+    @IBOutlet weak var tableView: UITableView!
+    
+    /// 输入试图
+    @IBOutlet weak var textView: YNTextView!
+    
     /// 数据源数组
     var datasource = Array<YNNianFrame>()
     
-    // 输入文字视图
-    lazy var textView: YNTextView = {
-        let frame = UIScreen.mainScreen().bounds
-        let textView = NSBundle.mainBundle().loadNibNamed("YNTextView", owner: nil, options: nil)[0] as! YNTextView
-        textView.delegate = self
-//        textView.frame.size.height = 0
-//        textView.transform = CGAffineTransformMakeScale(0, 0.001)
-//        let x = textView.constraints()
-        return textView
-    }()
-    
-    /// tableview
-    lazy var tableView: UITableView = {
-        let frame = UIScreen.mainScreen().bounds
-        let tableView = UITableView(frame: frame)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = UIColor.yellowColor()
-        tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        // 长按手势
-        let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
-        long.minimumPressDuration = 0.5
-        tableView.addGestureRecognizer(long)
-        
-        // 拖动手势
-        let pan = UIPanGestureRecognizer(target: self, action: Selector("pan:"))
-        pan.delegate = self
-        tableView.panGestureRecognizer.requireGestureRecognizerToFail(pan)
-        tableView.addGestureRecognizer(pan)
-        
-        return tableView
-    }()
+    /// 输入试图是否应该显示
+    var isTextViewVisible = false
+
+    @IBOutlet weak var textViewY: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.        
+        // Do any additional setup after loading the view, typically from a nib.    
         
-        /// 添加子视图
-        view.addSubview(tableView)
-        view.addSubview(textView)
-        
-//        for i in 1...100 {
-//            var text = ""
-//            for j in 1...i {
-//                let nianF = YNNianFrame(nian: YNNian(date: NSDate(timeIntervalSince1970: arc4random() % 100000000), text: "hahah", pic: "hah"), index: i)
-//                datasource.append(nianF)
-//            }
-//        }
+        self.setupTableView()
+        self.setupTextView()
     }
     
+    func setupTableView() {
+                tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
+//                tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+                // 长按手势
+                let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
+                long.minimumPressDuration = 0.5
+                tableView.addGestureRecognizer(long)
+    }
+    
+    func setupTextView() {
+        textView.delegate = self
+    }
+    
+    /**
+    长按手势
+    
+    :param: lp lp
+    */
     func long(lp: UILongPressGestureRecognizer) {
         if lp.state == UIGestureRecognizerState.Began {
             let point = lp.locationInView(tableView)
@@ -80,6 +66,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    /**
+    拖动手势
+    
+    :param: recognizer pan
+    */
     func pan(recognizer: UIPanGestureRecognizer) {
         if recognizer.translationInView(view).y > 0 {
             textView.frame.size.height = recognizer.translationInView(view).y
@@ -126,16 +117,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        cell.textView.text = datasource[indexPath.row]
-//        return cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 1
-//    }
-    
     // MARK: - Gesture recognizer delegete
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return touch.locationInView(view).y < 150
     }
     
+    // MARK: - Text view delegate
     func textViewDidReturn() {
         let nian = YNNian(date: NSDate(), text: "hahahahah", pic: nil)
         let nianF = YNNianFrame(nian: nian, index: 1)
@@ -147,9 +134,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.datasource.insert(nianF1, atIndex: 0)
         tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
         
-        textView.hidden = true
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.textView.transform = CGAffineTransformIdentity
+        })
+        self.isTextViewVisible = false
     }
     
+    // MARK: - Scroll view delegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if isTextViewVisible { return }
+        if y < 0 {
+            textView.transform = CGAffineTransformMakeTranslation(0, -y);
+        } else {
+            textView.transform = CGAffineTransformIdentity
+        }
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if textView.transform.ty > 100 {
+            isTextViewVisible = true
+            UIView.animateWithDuration(0.225, animations: { () -> Void in
+                self.textView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.size.height)
+            })
+            textView.textView.becomeFirstResponder()
+        }
+    }
+    
+    // MARK: - Image Picker
     func presentImagePickerSheet(gestureRecognizer: UITapGestureRecognizer) {
         let authorization = PHPhotoLibrary.authorizationStatus()
         
@@ -203,5 +215,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    /// tableview
+    //    lazy var tableView: UITableView = {
+
+    //        
+    //        return tableView
+    //    }()
 }
 
