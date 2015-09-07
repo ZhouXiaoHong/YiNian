@@ -202,12 +202,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    /// tableview
-    //    lazy var tableView: UITableView = {
-
-    //        
-    //        return tableView
-    //    }()
 }
 
