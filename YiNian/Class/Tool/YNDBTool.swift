@@ -49,13 +49,13 @@ class YNDBTool {
         }
     }
     
-    static func queryAllNian() -> Array<YNNian>? {
+    static func queryAllNian() -> Array<YNNian> {
         let db = FMDatabase(path: path)
+        var array = Array<YNNian>()
         if db.open() {
             let sql = "SELECT * FROM nian"
             let rs = db.executeQuery(sql)
             if let rs = rs {
-                var array = Array<YNNian>()
                 while rs.next() {
                     let nian = YNNian(date:NSDate(timeIntervalSince1970: (rs.doubleForColumn("dateStamp"))), text: rs.stringForColumn("text"), pic: rs.stringForColumn("pic"))
                     array.append(nian)
@@ -64,6 +64,6 @@ class YNDBTool {
             }
             db.close()
         }
-        return nil
+        return array
     }
 }

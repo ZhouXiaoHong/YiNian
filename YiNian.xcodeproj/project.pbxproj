@@ -118,9 +118,9 @@
 			children = (
 				4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */,
 				D4FE93B81B992D1B002CA4FC /* YNTextView.swift */,
+				411273581B9C7413006F45BC /* YNTableView.swift */,
 				41913F931B999786002F44D5 /* YNTimeView.swift */,
 				41913F951B99B151002F44D5 /* YNTimeView.xib */,
-				411273581B9C7413006F45BC /* YNTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

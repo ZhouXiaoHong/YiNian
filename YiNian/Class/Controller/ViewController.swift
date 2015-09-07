@@ -18,7 +18,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var textView: YNTextView!
     
     /// 数据源数组
-    var datasource = Array<YNNianFrame>()
+    var datasource: Array<YNNianFrame> = {
+        var datasource = Array<YNNianFrame>()
+        let ary = YNDBTool.queryAllNian()
+        for i in 0..<ary.count {
+            datasource.append(YNNianFrame(nian: ary[i], index: i))
+        }
+        return datasource
+    }()
     
     /// 输入试图是否应该显示
     var isTextViewVisible = false
@@ -27,26 +34,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.    
+        // Do any additional setup after loading the view, typically from a nib.   
+        
         
         self.setupTableView()
         self.setupTextView()
     }
     
     func setupTableView() {
-                tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
-//                tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-                // 长按手势
-                let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
-                long.minimumPressDuration = 0.5
-                tableView.addGestureRecognizer(long)
+        tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
+
+        // 长按手势
+        let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
+        long.minimumPressDuration = 0.5
+        tableView.addGestureRecognizer(long)
     }
     
     func setupTextView() {
         textView.delegate = self
     }
     
+    // MARK: - Gesture func
     /**
     长按手势
     
@@ -62,31 +70,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if indexPath?.row == 1 {
                 datasource.removeAtIndex(0)
                 tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            }
-        }
-    }
-    
-    /**
-    拖动手势
-    
-    :param: recognizer pan
-    */
-    func pan(recognizer: UIPanGestureRecognizer) {
-        if recognizer.translationInView(view).y > 0 {
-            textView.frame.size.height = recognizer.translationInView(view).y
-        }
-        if recognizer.state == UIGestureRecognizerState.Ended {
-            if textView.frame.height > 200 {
-                UIView.animateWithDuration(10, animations: { () -> Void in
-                    // 循环引用
-                    self.textView.frame.size.height = self.view.frame.height
-                    self.textView.transform = CGAffineTransformMakeScale(0, 2)
-                })
-            } else {
-                UIView.animateWithDuration(10, animations: { () -> Void in
-                    // 循环引用
-                    self.textView.frame.size.height = 0
-                })
             }
         }
     }
@@ -122,16 +105,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return touch.locationInView(view).y < 150
     }
     
+    
+    
     // MARK: - Text view delegate
-    func textViewDidReturn() {
-        let nian = YNNian(date: NSDate(), text: "hahahahah", pic: nil)
-        let nianF = YNNianFrame(nian: nian, index: 1)
-        self.datasource.insert(nianF, atIndex: 0)
-        tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
+    func textViewDidReturn(textView: UITextView, pic: String?) {
+        var index: Int
+        if datasource.count > 0 {
+            index = datasource[0].index + 1
+        } else {
+            index = 0
+        }
         
-        let nian1 = YNNian(date: NSDate(), text: "hahah222ahah", pic: nil)
-        let nianF1 = YNNianFrame(nian: nian1, index: 1)
-        self.datasource.insert(nianF1, atIndex: 0)
+        let nian = YNNian(date: NSDate(), text: textView.text, pic: nil)
+        let nianF = YNNianFrame(nian: nian, index: index)
+        self.datasource.insert(nianF, atIndex: 0)
         tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in

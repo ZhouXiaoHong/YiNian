@@ -9,7 +9,7 @@
 import UIKit
 
 protocol YNTextViewDelegate {
-    func textViewDidReturn()
+    func textViewDidReturn(textView: UITextView, pic: String?)
 }
 
 class YNTextView: UIView, UITextViewDelegate {
@@ -26,7 +26,7 @@ class YNTextView: UIView, UITextViewDelegate {
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
-            self.delegate?.textViewDidReturn()
+            self.delegate?.textViewDidReturn(textView, pic: nil)
             return false;
         }
         return true
