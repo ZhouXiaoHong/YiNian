@@ -33,6 +33,12 @@ class YNTextView: UIView, UITextViewDelegate {
 //            if textView.text.hasSuffix("#") {
                 self.delegate?.textViewDidEnterPic()
 //            }
+        } else if text == " " {
+            if textView.text .hasSuffix(" ") {
+                self.textView.text =  self.textView.text + "\n"
+                return false
+            }
+            return true
         }
         return true
     }
