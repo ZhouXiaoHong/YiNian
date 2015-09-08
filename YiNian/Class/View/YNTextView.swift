@@ -10,6 +10,7 @@ import UIKit
 
 protocol YNTextViewDelegate {
     func textViewDidReturn(textView: UITextView, pic: String?)
+    func textViewDidEnterPic() -> UIImage?
 }
 
 class YNTextView: UIView, UITextViewDelegate {
@@ -28,6 +29,10 @@ class YNTextView: UIView, UITextViewDelegate {
             textView.resignFirstResponder()
             self.delegate?.textViewDidReturn(textView, pic: nil)
             return false;
+        } else if text == "t" {
+//            if textView.text.hasSuffix("#") {
+                self.delegate?.textViewDidEnterPic()
+//            }
         }
         return true
     }

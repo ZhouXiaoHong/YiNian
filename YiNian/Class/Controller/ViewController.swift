@@ -43,6 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setupTableView() {
         tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.registerNib(UINib(nibName: "YNTimeCell", bundle: nil), forCellReuseIdentifier: "time")
 
         // 长按手势
         let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
@@ -80,16 +81,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! YNTableViewCell
-        if indexPath.row == 0 {
-            let timeView = NSBundle.mainBundle().loadNibNamed("YNTimeView", owner: nil, options: nil)[0] as! YNTimeView
-            timeView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: 44)
-            cell.contentView.addSubview(timeView)
-        } else {
-            cell.nianF = datasource[indexPath.row - 1]
-        }
         
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("time", forIndexPath: indexPath) as! YNTimeCell
+            cell.frame.size.width = UIScreen.mainScreen().bounds.width
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! YNTableViewCell
+            cell.nianF = datasource[indexPath.row - 1]
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -109,6 +110,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Text view delegate
     func textViewDidReturn(textView: UITextView, pic: String?) {
+        // 根据当前datasource计算index
         var index: Int
         if datasource.count > 0 {
             index = datasource[0].index + 1
@@ -117,6 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         let nian = YNNian(date: NSDate(), text: textView.text, pic: nil)
+        YNDBTool.insertNian(nian)
         let nianF = YNNianFrame(nian: nian, index: index)
         self.datasource.insert(nianF, atIndex: 0)
         tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
@@ -125,6 +128,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.textView.transform = CGAffineTransformIdentity
         })
         self.isTextViewVisible = false
+    }
+    
+    func textViewDidEnterPic() -> UIImage? {
+        self.presentImagePickerSheet()
+        return nil
     }
     
     // MARK: - Scroll view delegate
@@ -149,13 +157,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: - Image Picker
-    func presentImagePickerSheet(gestureRecognizer: UITapGestureRecognizer) {
+    func presentImagePickerSheet() {
         let authorization = PHPhotoLibrary.authorizationStatus()
         
         if authorization == .NotDetermined {
             PHPhotoLibrary.requestAuthorization() { status in
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.presentImagePickerSheet(gestureRecognizer)
+                    self.presentImagePickerSheet()
                 }
             }
             

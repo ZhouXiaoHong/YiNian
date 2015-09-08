@@ -10,11 +10,11 @@
 		411273591B9C7413006F45BC /* YNTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411273581B9C7413006F45BC /* YNTableView.swift */; };
 		4112735D1B9DD14E006F45BC /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112735B1B9DD14E006F45BC /* FMDatabaseAdditionsVariadic.swift */; };
 		4112735E1B9DD14E006F45BC /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112735C1B9DD14E006F45BC /* FMDatabaseVariadic.swift */; };
+		411273651B9DDF58006F45BC /* YNTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411273631B9DDF58006F45BC /* YNTimeCell.swift */; };
+		411273661B9DDF58006F45BC /* YNTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 411273641B9DDF58006F45BC /* YNTimeCell.xib */; };
 		4157E2CA1B97C92F00C140C2 /* YNNian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2C91B97C92F00C140C2 /* YNNian.swift */; };
 		4157E2CE1B97C9E700C140C2 /* YNNianFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2CD1B97C9E700C140C2 /* YNNianFrame.swift */; };
 		4157E2FF1B97E59C00C140C2 /* YNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */; };
-		41913F941B999786002F44D5 /* YNTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41913F931B999786002F44D5 /* YNTimeView.swift */; };
-		41913F961B99B151002F44D5 /* YNTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41913F951B99B151002F44D5 /* YNTimeView.xib */; };
 		419523861B95E403005F7958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419523841B95E403005F7958 /* Main.storyboard */; };
 		419523881B95E403005F7958 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419523871B95E403005F7958 /* Images.xcassets */; };
 		4195238B1B95E403005F7958 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 419523891B95E403005F7958 /* LaunchScreen.xib */; };
@@ -51,11 +51,11 @@
 		4112735B1B9DD14E006F45BC /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		4112735C1B9DD14E006F45BC /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
 		4112735F1B9DD162006F45BC /* YiNian-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YiNian-Bridging-Header.h"; sourceTree = "<group>"; };
+		411273631B9DDF58006F45BC /* YNTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTimeCell.swift; sourceTree = "<group>"; };
+		411273641B9DDF58006F45BC /* YNTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNTimeCell.xib; sourceTree = "<group>"; };
 		4157E2C91B97C92F00C140C2 /* YNNian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNNian.swift; sourceTree = "<group>"; };
 		4157E2CD1B97C9E700C140C2 /* YNNianFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNNianFrame.swift; sourceTree = "<group>"; };
 		4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTableViewCell.swift; sourceTree = "<group>"; };
-		41913F931B999786002F44D5 /* YNTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNTimeView.swift; sourceTree = "<group>"; };
-		41913F951B99B151002F44D5 /* YNTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNTimeView.xib; sourceTree = "<group>"; };
 		4195237B1B95E403005F7958 /* YiNian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiNian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4195237F1B95E403005F7958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		419523851B95E403005F7958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,8 +119,9 @@
 				4157E2FD1B97E59C00C140C2 /* YNTableViewCell.swift */,
 				D4FE93B81B992D1B002CA4FC /* YNTextView.swift */,
 				411273581B9C7413006F45BC /* YNTableView.swift */,
-				41913F931B999786002F44D5 /* YNTimeView.swift */,
-				41913F951B99B151002F44D5 /* YNTimeView.xib */,
+				411273631B9DDF58006F45BC /* YNTimeCell.swift */,
+				411273641B9DDF58006F45BC /* YNTimeCell.xib */,
+				419523841B95E403005F7958 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				419523A21B95E76A005F7958 /* libsqlite3.dylib */,
-				419523841B95E403005F7958 /* Main.storyboard */,
 				419523871B95E403005F7958 /* Images.xcassets */,
 				D4CA96961B9813660038FED3 /* haha.png */,
 				419523891B95E403005F7958 /* LaunchScreen.xib */,
@@ -359,7 +359,7 @@
 			files = (
 				419523861B95E403005F7958 /* Main.storyboard in Resources */,
 				4195238B1B95E403005F7958 /* LaunchScreen.xib in Resources */,
-				41913F961B99B151002F44D5 /* YNTimeView.xib in Resources */,
+				411273661B9DDF58006F45BC /* YNTimeCell.xib in Resources */,
 				419523881B95E403005F7958 /* Images.xcassets in Resources */,
 				D4CA96971B9813660038FED3 /* haha.png in Resources */,
 			);
@@ -422,9 +422,9 @@
 				D4FE940C1B9A886E002CA4FC /* ImagePreviewFlowLayout.swift in Sources */,
 				D4FE93B31B99142C002CA4FC /* YNDBTool.swift in Sources */,
 				4112735D1B9DD14E006F45BC /* FMDatabaseAdditionsVariadic.swift in Sources */,
-				41913F941B999786002F44D5 /* YNTimeView.swift in Sources */,
 				4157E2FF1B97E59C00C140C2 /* YNTableViewCell.swift in Sources */,
 				D4FE94071B9A886E002CA4FC /* AnimationController.swift in Sources */,
+				411273651B9DDF58006F45BC /* YNTimeCell.swift in Sources */,
 				D4FE940B1B9A886E002CA4FC /* ImagePickerSheetController.swift in Sources */,
 				D4FE940D1B9A886E002CA4FC /* ImagePreviewTableViewCell.swift in Sources */,
 				4157E2CE1B97C9E700C140C2 /* YNNianFrame.swift in Sources */,
@@ -459,6 +459,7 @@
 				419523851B95E403005F7958 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		419523891B95E403005F7958 /* LaunchScreen.xib */ = {
