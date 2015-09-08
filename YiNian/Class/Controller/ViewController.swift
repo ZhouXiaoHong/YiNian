@@ -53,6 +53,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setupTextView() {
         textView.delegate = self
+        let swipe = UISwipeGestureRecognizer(target: self, action: "swipe:")
+        swipe.delegate = self
+        swipe.direction = .Up
+        textView.addGestureRecognizer(swipe)
+        textView.textView.panGestureRecognizer.requireGestureRecognizerToFail(swipe)
+    }
+    
+    func swipe(swipe: UISwipeGestureRecognizer) {
+        textView.endEditing(true)
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.textView.transform = CGAffineTransformIdentity
+        })
+        self.isTextViewVisible = false
     }
     
     // MARK: - Gesture func
@@ -103,10 +116,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Gesture recognizer delegete
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return touch.locationInView(view).y < 150
+        if gestureRecognizer.isKindOfClass(UISwipeGestureRecognizer.self) {
+            if textView.textView.contentOffset.y == 0 {
+                println("aah")
+                return true
+            }
+            return false
+        }
+        return true
     }
-    
-    
     
     // MARK: - Text view delegate
     func textViewDidReturn(textView: UITextView, pic: String?) {

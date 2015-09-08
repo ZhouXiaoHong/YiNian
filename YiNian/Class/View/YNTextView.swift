@@ -19,8 +19,8 @@ class YNTextView: UIView, UITextViewDelegate {
     var delegate: YNTextViewDelegate?
     
     override func awakeFromNib() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "presentImagePickerSheet:")
-        self.addGestureRecognizer(tapRecognizer)
+        textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 500, right: 0)
+        textView.bounces = false
     }
     
     // MARK: - Text view delegate
