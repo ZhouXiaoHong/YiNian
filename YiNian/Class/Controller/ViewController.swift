@@ -117,7 +117,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - Gesture recognizer delegete
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if gestureRecognizer.isKindOfClass(UISwipeGestureRecognizer.self) {
-            if textView.textView.contentOffset.y == 0 {
+            let contentOffset = textView.textView.contentOffset
+            let contentInset = textView.textView.contentInset
+            let contentSize = textView.textView.contentSize
+            let height = textView.textView.frame.height
+            if contentSize.height < (height - contentInset.bottom) || contentOffset.y + (height - contentInset.bottom) == contentSize.height {
                 println("aah")
                 return true
             }
@@ -128,19 +132,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Text view delegate
     func textViewDidReturn(textView: UITextView, pic: String?) {
-        // 根据当前datasource计算index
-        var index: Int
-        if datasource.count > 0 {
-            index = datasource[0].index + 1
-        } else {
-            index = 0
+        // 判断是否要过滤掉
+        var flag = false
+        for c in textView.text {
+            if c != " " {
+                flag = true
+                break
+            }
         }
         
-        let nian = YNNian(date: NSDate(), text: textView.text, pic: nil)
-        YNDBTool.insertNian(nian)
-        let nianF = YNNianFrame(nian: nian, index: index)
-        self.datasource.insert(nianF, atIndex: 0)
-        tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
+        if !flag {
+            if pic != nil {
+                flag = true
+            }
+        }
+        
+        if flag {
+            // 根据当前datasource计算index
+            var index: Int
+            if datasource.count > 0 {
+                index = datasource[0].index + 1
+            } else {
+                index = 0
+            }
+            
+            let nian = YNNian(date: NSDate(), text: textView.text, pic: nil)
+            YNDBTool.insertNian(nian)
+            let nianF = YNNianFrame(nian: nian, index: index)
+            self.datasource.insert(nianF, atIndex: 0)
+            tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
+        }
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.textView.transform = CGAffineTransformIdentity
