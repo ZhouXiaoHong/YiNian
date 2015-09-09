@@ -30,9 +30,11 @@ class YNTextView: UIView, UITextViewDelegate {
             self.delegate?.textViewDidReturn(textView, pic: nil)
             return false;
         } else if text == "t" {
-//            if textView.text.hasSuffix("#") {
+            if textView.text.hasSuffix("@") {
+                textView.text.removeAtIndex(textView.text.endIndex.predecessor())
                 self.delegate?.textViewDidEnterPic()
-//            }
+                return false
+            }
         } else if text == " " {
             if textView.text .hasSuffix(" ") {
                 self.textView.text =  self.textView.text + "\n"
