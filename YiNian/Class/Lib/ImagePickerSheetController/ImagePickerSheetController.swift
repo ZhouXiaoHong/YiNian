@@ -10,7 +10,7 @@ import Foundation
 import Photos
 
 private let tableViewPreviewRowHeight: CGFloat = 140.0
-private let tableViewEnlargedPreviewRowHeight: CGFloat = 243.0
+private let tableViewEnlargedPreviewRowHeight: CGFloat = 180.0 //周宏 243 200
 private let collectionViewInset: CGFloat = 5.0
 private let collectionViewCheckmarkInset: CGFloat = 3.5
 
@@ -79,7 +79,8 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
         return selectedImageIndices.map { self.assets[$0] }
     }
     
-    private(set) var enlargedPreviews = false
+    // 周宏
+    private(set) var enlargedPreviews = true
     
     private var supplementaryViews = [Int: PreviewSupplementaryView]()
     
@@ -200,17 +201,17 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
         
         return cell
     }
-    
-    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: NSStringFromClass(PreviewSupplementaryView.self), forIndexPath: indexPath) as! PreviewSupplementaryView
-        view.userInteractionEnabled = false
-        view.buttonInset = UIEdgeInsetsMake(0.0, collectionViewCheckmarkInset, collectionViewCheckmarkInset, 0.0)
-        view.selected = contains(selectedImageIndices, indexPath.section)
-        
-        supplementaryViews[indexPath.section] = view
-        
-        return view
-    }
+    // 周宏 去掉勾选图案
+//    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+//        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: NSStringFromClass(PreviewSupplementaryView.self), forIndexPath: indexPath) as! PreviewSupplementaryView
+//        view.userInteractionEnabled = false
+//        view.buttonInset = UIEdgeInsetsMake(0.0, collectionViewCheckmarkInset, collectionViewCheckmarkInset, 0.0)
+//        view.selected = contains(selectedImageIndices, indexPath.section)
+//        
+//        supplementaryViews[indexPath.section] = view
+//        
+//        return view
+//    }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     
@@ -240,49 +241,59 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
         }
     }
     
+    // 周宏重写了下面的方法
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
-        let selected = contains(selectedImageIndices, indexPath.section)
-        
-        if !selected {
-            selectedImageIndices.append(indexPath.section)
-            
-            if !enlargedPreviews {
-                enlargedPreviews = true
-                
-                self.collectionView.imagePreviewLayout.invalidationCenteredIndexPath = indexPath
-                
-                view.setNeedsLayout()
-                UIView.animateWithDuration(0.3, animations: {
-                    self.tableView.beginUpdates()
-                    self.tableView.endUpdates()
-                    self.view.layoutIfNeeded()
-                }, completion: { finished in
-                    self.reloadButtons()
-                    self.collectionView.imagePreviewLayout.showsSupplementaryViews = true
-                })
-            }
-            else {
-                if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
-                    var contentOffset = CGPointMake(cell.frame.midX - collectionView.frame.width / 2.0, 0.0)
-                    contentOffset.x = max(contentOffset.x, -collectionView.contentInset.left)
-                    contentOffset.x = min(contentOffset.x, collectionView.contentSize.width - collectionView.frame.width + collectionView.contentInset.right)
-                    
-                    collectionView.setContentOffset(contentOffset, animated: true)
-                }
-                
-                reloadButtons()
-            }
-        }
-        else {
-            selectedImageIndices.removeAtIndex(find(selectedImageIndices, indexPath.section)!)
-            reloadButtons()
-        }
-        
-        if let sectionView = supplementaryViews[indexPath.section] {
-            sectionView.selected = !selected
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if let cell = cell {
+            let f = cell.convertRect(cell.frame, toView: UIApplication.sharedApplication().keyWindow)
+            println(f)
+            let x = assets[indexPath.section]
         }
     }
+    
+    
+//    public func collectionView1(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+//        let selected = contains(selectedImageIndices, indexPath.section)
+//        let x = assets[indexPath.section] // 周宏改的
+//        if !selected {
+//            selectedImageIndices.append(indexPath.section)
+//            if !enlargedPreviews {
+//                enlargedPreviews = true
+//                
+//                self.collectionView.imagePreviewLayout.invalidationCenteredIndexPath = indexPath
+//                
+//                view.setNeedsLayout()
+//                UIView.animateWithDuration(0.3, animations: {
+//                    self.tableView.beginUpdates()
+//                    self.tableView.endUpdates()
+//                    self.view.layoutIfNeeded()
+//                }, completion: { finished in
+//                    self.reloadButtons()
+//                    self.collectionView.imagePreviewLayout.showsSupplementaryViews = true
+//                })
+//            }
+//            else {
+//                if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+//                    var contentOffset = CGPointMake(cell.frame.midX - collectionView.frame.width / 2.0, 0.0)
+//                    contentOffset.x = max(contentOffset.x, -collectionView.contentInset.left)
+//                    contentOffset.x = min(contentOffset.x, collectionView.contentSize.width - collectionView.frame.width + collectionView.contentInset.right)
+//                    
+//                    collectionView.setContentOffset(contentOffset, animated: true)
+//                }
+//                
+//                reloadButtons()
+//            }
+//        }
+//        else {
+//            selectedImageIndices.removeAtIndex(find(selectedImageIndices, indexPath.section)!)
+//            reloadButtons()
+//        }
+//        // 周宏 不需要设置勾选图案
+////        if let sectionView = supplementaryViews[indexPath.section] {
+////            sectionView.selected = !selected
+////        }
+//    }
     
     // MARK: - Actions
     

@@ -122,7 +122,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let contentSize = textView.textView.contentSize
             let height = textView.textView.frame.height
             if contentSize.height < (height - contentInset.bottom) || contentOffset.y + (height - contentInset.bottom) == contentSize.height {
-                println("aah")
                 return true
             }
             return false
@@ -224,6 +223,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             let controller = ImagePickerSheetController()
+            
+            
 //            controller.addAction(ImageAction(title: NSLocalizedString("Take Photo Or Video", comment: "Action Title"), secondaryTitle: NSLocalizedString("Add comment", comment: "Action Title"), handler: { _ in
 //                presentImagePickerController(.Camera)
 //                }, secondaryHandler: { _, numberOfPhotos in
@@ -246,8 +247,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        println("aha")
+    }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        println("aha")
     }
 }
 
