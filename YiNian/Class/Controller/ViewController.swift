@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, YNTextViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, YNTextViewDelegate, ImagePickerDelegate {
     
     /// 列表试图
     @IBOutlet weak var tableView: UITableView!
@@ -130,7 +130,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: - Text view delegate
-    func textViewDidReturn(textView: UITextView, pic: String?) {
+    func textViewDidReturn(textView: UITextView, pic: UIImage?) {
         // 判断是否要过滤掉
         var flag = false
         for c in textView.text {
@@ -146,6 +146,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         
+        // 不过滤
         if flag {
             // 根据当前datasource计算index
             var index: Int
@@ -156,15 +157,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             let nian = YNNian(date: NSDate(), text: textView.text, pic: nil)
+            if let pic = pic {
+                let data = UIImagePNGRepresentation(pic)
+                let path = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String).stringByAppendingPathComponent(nian.strDate + ".png")
+                data.writeToFile(path, atomically: true)
+                println(path)
+                
+            }
             YNDBTool.insertNian(nian)
             let nianF = YNNianFrame(nian: nian, index: index)
             self.datasource.insert(nianF, atIndex: 0)
             tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)], withRowAnimation: .Fade)
         }
         
+        // 隐藏textView
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.textView.transform = CGAffineTransformIdentity
         })
+        
         self.isTextViewVisible = false
     }
     
@@ -223,6 +233,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             let controller = ImagePickerSheetController()
+            controller.delegate = self
             
             
 //            controller.addAction(ImageAction(title: NSLocalizedString("Take Photo Or Video", comment: "Action Title"), secondaryTitle: NSLocalizedString("Add comment", comment: "Action Title"), handler: { _ in
@@ -245,6 +256,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let alertView = UIAlertView(title: NSLocalizedString("An error occurred", comment: "An error occurred"), message: NSLocalizedString("ImagePickerSheet needs access to the camera roll", comment: "ImagePickerSheet needs access to the camera roll"), delegate: nil, cancelButtonTitle: NSLocalizedString("OK", comment: "OK"))
             alertView.show()
         }
+    }
+    
+    func imagePickerDidSelectImage(image: UIImage, frame: CGRect) {
+        textView.selectImageView(image, frame: frame)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {

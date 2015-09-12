@@ -14,7 +14,14 @@ private let tableViewEnlargedPreviewRowHeight: CGFloat = 180.0 //周宏 243 200
 private let collectionViewInset: CGFloat = 5.0
 private let collectionViewCheckmarkInset: CGFloat = 3.5
 
+protocol ImagePickerDelegate {
+    func imagePickerDidSelectImage(image: UIImage, frame: CGRect)
+}
+
 public class ImagePickerSheetController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate {
+    
+    // 周宏
+    var delegate: ImagePickerDelegate?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -245,9 +252,14 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if let cell = cell {
-            let f = cell.convertRect(cell.frame, toView: UIApplication.sharedApplication().keyWindow)
-            println(f)
+            let frame = cell.convertRect(cell.frame, toView: UIApplication.sharedApplication().keyWindow)
             let x = assets[indexPath.section]
+            if let delegate = delegate {
+                requestImageForAsset(x, size:nil) { image in
+                    delegate.imagePickerDidSelectImage(image!, frame: frame)
+                }
+                self.cancel()
+            }
         }
     }
     
