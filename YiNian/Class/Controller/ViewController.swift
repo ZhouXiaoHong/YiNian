@@ -173,7 +173,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // 隐藏textView
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.textView.transform = CGAffineTransformIdentity
-        })
+        }) { (success) -> Void in
+            if success {
+                self.textView.placeholder.hidden = false
+            }
+        }
         
         self.isTextViewVisible = false
     }

@@ -15,11 +15,13 @@ protocol YNTextViewDelegate {
 
 class YNTextView: UIView, UITextViewDelegate {
     
+    let motto = "我上班就是为了钱，可他非要和我谈理想，可我的理想是不上班"
+    
     @IBOutlet weak var textView: UITextView!
     
-    var delegate: YNTextViewDelegate?
+    let placeholder = UILabel()
     
-    var isOrigin = true
+    var delegate: YNTextViewDelegate?
     
     var iv: UIImageView = {
         let iv = UIImageView()
@@ -29,12 +31,25 @@ class YNTextView: UIView, UITextViewDelegate {
     
     var keyboardHeight: CGFloat = 0.0
     
+    // 初始化
     override func awakeFromNib() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 500, right: 0)
+        // 监听
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChange:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
+        // textView
         textView.bounces = false
         textView.selectedRange = NSMakeRange(0, 0)
         self.addSubview(iv)
+        
+        // setup占位文字
+        placeholder.userInteractionEnabled = false
+        placeholder.font = textView.font
+        placeholder.text = motto
+        placeholder.frame = CGRectMake(6, 8, UIScreen.mainScreen().bounds.size.width - 6, 50)
+        placeholder.textColor = UIColor.whiteColor()
+        placeholder.numberOfLines = 0
+        placeholder.sizeToFit()
+        self.addSubview(placeholder)
     }
     
     func selectImageView(image: UIImage, frame: CGRect) {
@@ -51,30 +66,31 @@ class YNTextView: UIView, UITextViewDelegate {
     }
     
     // MARK: - Notification selector
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillChange(notification: NSNotification) {
         // 保存键盘高度
         let userInfo: NSDictionary = notification.userInfo!
-        let keyboardInfo: AnyObject? = userInfo.objectForKey(UIKeyboardFrameBeginUserInfoKey)
+        let keyboardInfo: AnyObject? = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey)
         let height = keyboardInfo?.CGRectValue().size.height
         if let height = height {
-            keyboardHeight = height
+            textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         }
     }
     
     // MARK: - Text view delegate
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
+            // 是否为回车
+            textView.text = ""
             textView.resignFirstResponder()
             self.delegate?.textViewDidReturn(textView, pic: iv.image)
             return false;
-        } else if text == "t" {
-            if textView.text.hasSuffix("@") {
-                textView.text.removeAtIndex(textView.text.endIndex.predecessor())
-                textView.endEditing(true)
-                self.delegate?.textViewDidEnterPic()
-                return false
-            }
+        } else if text == "@" {
+            // 是否为@
+            textView.endEditing(true)
+            self.delegate?.textViewDidEnterPic()
+            return false
         } else if text == " " {
+            // 是否为空格
             if textView.text .hasSuffix(" ") {
                 self.textView.text =  self.textView.text + "\n"
                 return false
@@ -85,14 +101,10 @@ class YNTextView: UIView, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        if count(textView.text) > 0 && textView.text.hasSuffix("Time is life.") && isOrigin == true {
-            let range = textView.text.rangeOfString("Time is life.")!
-            textView.text.removeRange(range)
-            textView.textColor = .whiteColor()
-        } else if count(textView.text) == 0 {
-            textView.text = "Time is life."
-            textView.textColor = .lightGrayColor()
-            textView.selectedRange = NSMakeRange(0, 0)
+        if count(textView.text) == 0 {
+            placeholder.hidden = false
+        } else {
+            placeholder.hidden = true
         }
     }
 }
