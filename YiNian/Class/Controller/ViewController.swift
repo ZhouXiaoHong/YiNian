@@ -223,18 +223,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         if authorization == .Authorized {
-            let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
-                let controller = UIImagePickerController()
-                controller.delegate = self
-                var sourceType = source
-                if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
-                    sourceType = .PhotoLibrary
-                    println("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
-                }
-                controller.sourceType = sourceType
-                
-                self.presentViewController(controller, animated: true, completion: nil)
-            }
+//            let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+//                let controller = UIImagePickerController()
+//                controller.delegate = self
+//                var sourceType = source
+//                if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+//                    sourceType = .PhotoLibrary
+//                    println("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+//                }
+//                controller.sourceType = sourceType
+//                
+//                self.presentViewController(controller, animated: true, completion: nil)
+//            }
             
             let controller = ImagePickerSheetController()
             controller.delegate = self
@@ -262,20 +262,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    // MARK: - Image picker deleagte
     func imagePickerDidSelectImage(image: UIImage, frame: CGRect) {
         textView.selectImageView(image, frame: frame)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        println("aha")
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        println("aha")
+    func imagePickerDidCancle() {
+        textView.textView.becomeFirstResponder()
     }
 }
 

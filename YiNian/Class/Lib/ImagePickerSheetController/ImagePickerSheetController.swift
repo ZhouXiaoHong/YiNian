@@ -16,6 +16,7 @@ private let collectionViewCheckmarkInset: CGFloat = 3.5
 
 protocol ImagePickerDelegate {
     func imagePickerDidSelectImage(image: UIImage, frame: CGRect)
+    func imagePickerDidCancle()
 }
 
 public class ImagePickerSheetController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate {
@@ -390,6 +391,9 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
     
     @objc private func cancel() {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        if let delegate = delegate {
+            delegate.imagePickerDidCancle()
+        }
         
         let cancelActions = actions.filter { $0.style == ImageActionStyle.Cancel }
         if let cancelAction = cancelActions.first {
