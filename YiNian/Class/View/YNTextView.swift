@@ -19,6 +19,8 @@ class YNTextView: UIView, UITextViewDelegate {
     
     var delegate: YNTextViewDelegate?
     
+    var isOrigin = true
+    
     var iv: UIImageView = {
         let iv = UIImageView()
         iv.hidden = true
@@ -31,8 +33,23 @@ class YNTextView: UIView, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 500, right: 0)
         textView.bounces = false
+        textView.selectedRange = NSMakeRange(0, 0)
         self.addSubview(iv)
     }
+    
+    func selectImageView(image: UIImage, frame: CGRect) {
+        iv.image = image
+        iv.frame = frame
+        iv.hidden = false
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.iv.frame = CGRectMake(100, self.keyboardHeight, 100, 100)
+            }) { (hasDone) -> Void in
+                if hasDone {
+                    self.textView.becomeFirstResponder()
+                }
+        }
+    }
+    
     // MARK: - Notification selector
     func keyboardWillShow(notification: NSNotification) {
         // 保存键盘高度
@@ -67,16 +84,15 @@ class YNTextView: UIView, UITextViewDelegate {
         return true
     }
     
-    func selectImageView(image: UIImage, frame: CGRect) {
-        iv.image = image
-        iv.frame = frame
-        iv.hidden = false
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.iv.frame = CGRectMake(100, self.keyboardHeight, 100, 100)
-        }) { (hasDone) -> Void in
-            if hasDone {
-                self.textView.becomeFirstResponder()
-            }
+    func textViewDidChange(textView: UITextView) {
+        if count(textView.text) > 0 && textView.text.hasSuffix("Time is life.") && isOrigin == true {
+            let range = textView.text.rangeOfString("Time is life.")!
+            textView.text.removeRange(range)
+            textView.textColor = .whiteColor()
+        } else if count(textView.text) == 0 {
+            textView.text = "Time is life."
+            textView.textColor = .lightGrayColor()
+            textView.selectedRange = NSMakeRange(0, 0)
         }
     }
 }

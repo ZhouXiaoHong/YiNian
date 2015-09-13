@@ -10,7 +10,7 @@ import Foundation
 import Photos
 
 private let tableViewPreviewRowHeight: CGFloat = 140.0
-private let tableViewEnlargedPreviewRowHeight: CGFloat = 180.0 //周宏 243 200
+private let tableViewEnlargedPreviewRowHeight: CGFloat = 252.0 //周宏 243 200
 private let collectionViewInset: CGFloat = 5.0
 private let collectionViewCheckmarkInset: CGFloat = 3.5
 
