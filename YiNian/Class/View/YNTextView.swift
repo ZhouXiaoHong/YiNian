@@ -15,7 +15,7 @@ protocol YNTextViewDelegate {
 
 class YNTextView: UIView, UITextViewDelegate {
     
-    let motto = "我上班就是为了钱，可他非要和我谈理想，可我的理想是不上班"
+    let motto = "唯有孤獨是永恆的"
     
     @IBOutlet weak var textView: UITextView!
     
@@ -46,7 +46,7 @@ class YNTextView: UIView, UITextViewDelegate {
         placeholder.font = textView.font
         placeholder.text = motto
         placeholder.frame = CGRectMake(6, 8, UIScreen.mainScreen().bounds.size.width - 6, 50)
-        placeholder.textColor = UIColor.whiteColor()
+        placeholder.textColor = UIColor(white: 72/255.0, alpha: 1.0)
         placeholder.numberOfLines = 0
         placeholder.sizeToFit()
         self.addSubview(placeholder)
@@ -57,10 +57,11 @@ class YNTextView: UIView, UITextViewDelegate {
         iv.frame = frame
         iv.hidden = false
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.iv.frame = CGRectMake(100, self.keyboardHeight, 100, 100)
+            let frame = UIScreen.mainScreen().bounds
+            self.iv.frame = CGRectMake(frame.width - 100 - 10, frame.height - self.keyboardHeight - 10 - 100, 100, 100)
             }) { (hasDone) -> Void in
                 if hasDone {
-                    self.textView.becomeFirstResponder()
+//                    self.textView.becomeFirstResponder()
                 }
         }
     }
@@ -72,6 +73,7 @@ class YNTextView: UIView, UITextViewDelegate {
         let keyboardInfo: AnyObject? = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey)
         let height = keyboardInfo?.CGRectValue().size.height
         if let height = height {
+            keyboardHeight = height
             textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         }
     }
@@ -86,7 +88,7 @@ class YNTextView: UIView, UITextViewDelegate {
             return false;
         } else if text == "@" {
             // 是否为@
-            textView.endEditing(true)
+            textView.resignFirstResponder()
             self.delegate?.textViewDidEnterPic()
             return false
         } else if text == " " {

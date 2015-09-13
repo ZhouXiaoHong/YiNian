@@ -253,7 +253,9 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if let cell = cell {
-            let frame = cell.convertRect(cell.frame, toView: UIApplication.sharedApplication().keyWindow)
+            var frame = cell.convertRect(cell.frame, toView: UIApplication.sharedApplication().keyWindow)
+//            let deltaX = collectionView.contentOffset.x
+//            frame.origin.x -= deltaX
             let x = assets[indexPath.section]
             if let delegate = delegate {
                 requestImageForAsset(x, size:nil) { image in
