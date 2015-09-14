@@ -23,10 +23,10 @@ class YNTextView: UIView, UITextViewDelegate {
     
     var delegate: YNTextViewDelegate?
     
-    var iv: UIImageView = {
-        let iv = UIImageView()
-        iv.hidden = true
-        return iv
+    var btn: UIButton = {
+        let btn = UIButton()
+        btn.hidden = true
+        return btn
     }()
     
     var keyboardHeight: CGFloat = 0.0
@@ -39,7 +39,10 @@ class YNTextView: UIView, UITextViewDelegate {
         // textView
         textView.bounces = false
         textView.selectedRange = NSMakeRange(0, 0)
-        self.addSubview(iv)
+        
+        // 图片
+        btn.addTarget(self, action: "btnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(btn)
         
         // setup占位文字
         placeholder.userInteractionEnabled = false
@@ -52,13 +55,18 @@ class YNTextView: UIView, UITextViewDelegate {
         self.addSubview(placeholder)
     }
     
+    func btnClick(sender: UIButton) {
+        sender.hidden = true
+    }
+    
     func selectImageView(image: UIImage, frame: CGRect) {
-        iv.image = image
-        iv.frame = frame
-        iv.hidden = false
+        btn.imageView?.image = image
+        btn.setImage(image, forState: UIControlState.Normal)
+        btn.frame = frame
+        btn.hidden = false
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             let frame = UIScreen.mainScreen().bounds
-            self.iv.frame = CGRectMake(frame.width - 100 - 10, frame.height - self.keyboardHeight - 10 - 100, 100, 100)
+            self.btn.frame = CGRectMake(frame.width - 100 - 10, frame.height - self.keyboardHeight - 10 - 100, 100, 100)
             }) { (hasDone) -> Void in
                 if hasDone {
 //                    self.textView.becomeFirstResponder()
@@ -84,7 +92,7 @@ class YNTextView: UIView, UITextViewDelegate {
             // 是否为回车
             textView.text = ""
             textView.resignFirstResponder()
-            self.delegate?.textViewDidReturn(textView, pic: iv.image)
+            self.delegate?.textViewDidReturn(textView, pic: btn.imageView!.image)
             return false;
         } else if text == "@" {
             // 是否为@

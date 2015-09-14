@@ -1,2 +1,4 @@
 platform :ios, '8.0'
+link_with 'YiNian', 'GPUImage'
+pod 'GPUImage'
 pod 'FMDB'

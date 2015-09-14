@@ -3,3 +3,5 @@
 //
 
 #import "FMDB.h"
+#import "GPUImage.h"
+#import "YNImageTool.h"

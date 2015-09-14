@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7FC267B900F535F17A6B0E4C9D9883B7</key>
+		<key>7FA7D6FEF73F0B47FEA1CA9F3F2AB7DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4A005FF608B25BF7F9F63F43D0739DF</key>
+		<key>904F63AC1A57CC913BC2B2A4A4094B4E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC0FC890EDF53B1B00EB7531A1B162FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

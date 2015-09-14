@@ -204,7 +204,11 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
         let size = sizeForAsset(asset)
         
         requestImageForAsset(asset, size: size) { image in
-            cell.imageView.image = image
+//            let pic = GPUImagePicture(image: image)
+//            let filter = GPUImageAverageLuminanceThresholdFilter()
+//            GPUImageFilterPipeline(orderedFilters: [filter], input: pic, output: cell.imageView as! GPUImageView)
+//            pic.processImage()
+            cell.imageView.image = YNImageTool.convertImageToGreyScale(image)
         }
         
         return cell
@@ -259,7 +263,7 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
             let x = assets[indexPath.section]
             if let delegate = delegate {
                 requestImageForAsset(x, size:nil) { image in
-                    delegate.imagePickerDidSelectImage(image!, frame: frame)
+                    delegate.imagePickerDidSelectImage(YNImageTool.convertImageToGreyScale(image!), frame: frame)
                 }
                 self.cancel()
             }
