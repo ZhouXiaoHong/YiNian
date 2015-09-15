@@ -255,18 +255,15 @@ public class ImagePickerSheetController: UIViewController, UITableViewDataSource
     
     // 周宏重写了下面的方法
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if let cell = cell {
-            var frame = cell.convertRect(cell.frame, toView: UIApplication.sharedApplication().keyWindow)
-//            let deltaX = collectionView.contentOffset.x
-//            frame.origin.x -= deltaX
-            let x = assets[indexPath.section]
-            if let delegate = delegate {
-                requestImageForAsset(x, size:nil) { image in
-                    delegate.imagePickerDidSelectImage(YNImageTool.convertImageToGreyScale(image!), frame: frame)
-                }
-                self.cancel()
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)!
+        let frame = view.convertRect(cell.frame, fromView: collectionView)
+        
+        let x = assets[indexPath.section]
+        if let delegate = delegate {
+            requestImageForAsset(x, size:nil) { image in
+                delegate.imagePickerDidSelectImage(YNImageTool.convertImageToGreyScale(image!), frame: frame)
             }
+            cancel()
         }
     }
     
