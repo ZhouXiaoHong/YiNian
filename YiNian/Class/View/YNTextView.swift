@@ -25,6 +25,7 @@ class YNTextView: UIView, UITextViewDelegate {
     
     var btn: UIButton = {
         let btn = UIButton()
+        btn.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
         btn.hidden = true
         return btn
     }()
