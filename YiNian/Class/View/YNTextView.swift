@@ -57,6 +57,7 @@ class YNTextView: UIView, UITextViewDelegate {
     
     func btnClick(sender: UIButton) {
         sender.hidden = true
+        sender.setImage(nil, forState: .Normal)
     }
     
     func selectImageView(image: UIImage, frame: CGRect) {
@@ -81,6 +82,9 @@ class YNTextView: UIView, UITextViewDelegate {
         let keyboardInfo: AnyObject? = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey)
         let height = keyboardInfo?.CGRectValue().size.height
         if let height = height {
+            if !btn.hidden {
+                btn.frame.origin.y += keyboardHeight - height
+            }
             keyboardHeight = height
             textView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         }
@@ -90,9 +94,11 @@ class YNTextView: UIView, UITextViewDelegate {
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             // 是否为回车
-            textView.text = ""
             textView.resignFirstResponder()
             self.delegate?.textViewDidReturn(textView, pic: btn.imageView!.image)
+            btn.setImage(nil, forState: UIControlState.Normal)
+            textView.text = ""
+            btn.hidden = true
             return false;
         } else if text == "@" {
             // 是否为@
