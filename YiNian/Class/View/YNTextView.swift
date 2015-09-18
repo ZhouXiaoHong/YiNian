@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 protocol YNTextViewDelegate {
     func textViewDidReturn(textView: UITextView, pic: UIImage?)
@@ -60,7 +61,22 @@ class YNTextView: UIView, UITextViewDelegate {
         sender.setImage(nil, forState: .Normal)
     }
     
+    private func fetchAssets(inout assets: [PHAsset]) {
+        let options = PHFetchOptions()
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let result = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+        
+        result.enumerateObjectsUsingBlock { obj, _, _ in
+            if let asset = obj as? PHAsset where assets.count < 50 {
+                assets.append(asset)
+            }
+        }
+    }
+    
     func selectImageView(image: UIImage, frame: CGRect) {
+        var s = [PHAsset]()
+        fetchAssets(&s)
+        let asset = s[1]
         btn.imageView?.image = image
         btn.setImage(image, forState: UIControlState.Normal)
         btn.frame = frame
