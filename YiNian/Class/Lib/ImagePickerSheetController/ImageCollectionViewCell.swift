@@ -24,11 +24,11 @@ class ImageCollectionViewCell : UICollectionViewCell {
         
         initialize()
     }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+
+    required init?(coder aDecoder: NSCoder) {
+                super.init(coder: aDecoder)
         
-        initialize()
+                initialize()
     }
     
     private func initialize() {

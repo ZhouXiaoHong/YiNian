@@ -133,7 +133,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func textViewDidReturn(textView: UITextView, pic: UIImage?) {
         // 判断是否要过滤掉
         var flag = false
-        for c in textView.text {
+        for c in textView.text.characters {
             if c != " " {
                 flag = true
                 break
@@ -159,9 +159,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let nian = YNNian(date: NSDate(), text: textView.text, pic: nil)
             if let pic = pic {
                 let data = UIImagePNGRepresentation(pic)
-                let path = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String).stringByAppendingPathComponent(nian.strDate + ".png")
-                data.writeToFile(path, atomically: true)
-                println(path)
+                let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(nian.strDate + ".png")
+                data!.writeToURL(path, atomically: true)
+                print(path)
                 
             }
             YNDBTool.insertNian(nian)

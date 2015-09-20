@@ -8,7 +8,7 @@
 import UIKit
 
 class YNDBTool {
-    private static let path = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String).stringByAppendingPathComponent("yinian.db")
+    static let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("yinian.db").absoluteString
     
     static let formatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
@@ -19,7 +19,7 @@ class YNDBTool {
     static func createTable() {
         let db = FMDatabase(path: path)
         if db.open() {
-            println(path)
+            print(path)
             let sql = "CREATE TABLE IF NOT EXISTS nian (date TEXT PRIMARY KEY, dateStamp REAL, text TEXT, pic TEXT)"
             db.executeStatements(sql)
             db.close()

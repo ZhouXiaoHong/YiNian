@@ -4,15 +4,29 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>GPUImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>SQLite.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +37,21 @@
 			<true/>
 		</dict>
 		<key>63E58A3FA9FBDA83851A64E5238E604B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7FA7D6FEF73F0B47FEA1CA9F3F2AB7DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>904F63AC1A57CC913BC2B2A4A4094B4E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC0FC890EDF53B1B00EB7531A1B162FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

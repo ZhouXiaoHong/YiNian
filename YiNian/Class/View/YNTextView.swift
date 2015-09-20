@@ -81,7 +81,7 @@ class YNTextView: UIView, UITextViewDelegate {
         // 保存键盘高度
         let userInfo: NSDictionary = notification.userInfo!
         let keyboardInfo: AnyObject? = userInfo.objectForKey(UIKeyboardFrameEndUserInfoKey)
-        let height = keyboardInfo?.CGRectValue().size.height
+        let height = keyboardInfo?.CGRectValue.size.height
         if let height = height {
             if !btn.hidden {
                 btn.frame.origin.y += keyboardHeight - height
@@ -118,7 +118,7 @@ class YNTextView: UIView, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        if count(textView.text) == 0 {
+        if textView.text.characters.count == 0 {
             placeholder.hidden = false
         } else {
             placeholder.hidden = true

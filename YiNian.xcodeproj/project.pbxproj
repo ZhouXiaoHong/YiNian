@@ -325,6 +325,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YN;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Mars;
 				TargetAttributes = {
