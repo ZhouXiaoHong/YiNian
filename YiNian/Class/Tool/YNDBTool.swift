@@ -26,6 +26,24 @@ class YNDBTool {
         }
     }
     
+    static func hasTodayInsert() -> Bool {
+        let db = FMDatabase(path: path)
+        if db.open() {
+            let sql = "SELECT * FROM nian WHERE date = ?"
+            let rs = db.executeQuery(sql, formatter.stringFromDate(NSDate()))
+            if let rs = rs {
+                let b = rs.next()
+                rs.close()
+                db.close()
+                return b
+            } else {
+                db.close()
+                return false
+            }
+        }
+        return false
+    }
+    
     static func insertNian(nian: YNNian) {
         let db = FMDatabase(path: path)
         if db.open() {
