@@ -27,9 +27,12 @@ class YNNianFrame {
         
         var attribute = NSMutableDictionary()
         attribute.setObject(UIFont.systemFontOfSize(14), forKey: NSFontAttributeName)
-        let textS = nian.text.boundingRectWithSize(CGSize(width: maxWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attribute as [NSObject : AnyObject], context: nil).size
+//        let textS = nian.text.boundingRectWithSize(CGSize(width: maxWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attribute as [NSObject : AnyObject], context: nil).size
         
-        let dateS = nian.strDate.boundingRectWithSize(CGSize(width: maxWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attribute as [NSObject : AnyObject], context: nil).size
+//        let dateS = nian.strDate.boundingRectWithSize(CGSize(width: maxWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attribute as [NSObject : AnyObject], context: nil).size
+        
+        let textS = CGRectZero
+        let dateS = CGRectZero
         
         if index % 2 == 0 {
             textF = CGRect(x: maxWidth - textS.width, y: 0, width: textS.width, height: textS.height)
