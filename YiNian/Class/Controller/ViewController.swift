@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /// 输入试图
     @IBOutlet weak var textView: YNTextView!
     
+    var shouldShow = !YNDBTool.hasTodayInsert()
+    
     /// 数据源数组
     var datasource: Array<YNNianFrame> = {
         var datasource = Array<YNNianFrame>()
@@ -44,6 +46,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func setupTableView() {
         tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.registerNib(UINib(nibName: "YNTimeCell", bundle: nil), forCellReuseIdentifier: "time")
+        tableView.registerNib(UINib(nibName: "YNLeftCell", bundle: nil), forCellReuseIdentifier: "left")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
 
         // 长按手势
         let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
@@ -80,10 +85,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if tableView.contentSize.height < point.y {
                 return
             }
+            
             let indexPath = tableView.indexPathForRowAtPoint(point)
             if indexPath?.row == 1 {
                 datasource.removeAtIndex(0)
                 tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                YNDBTool.deleteTodayNian()
             }
         }
     }
@@ -99,9 +106,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = tableView.dequeueReusableCellWithIdentifier("time", forIndexPath: indexPath) as! YNTimeCell
             cell.frame.size.width = UIScreen.mainScreen().bounds.width
             return cell
-        } else {
+        } else if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! YNTableViewCell
             cell.nianF = datasource[indexPath.row - 1]
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("left", forIndexPath: indexPath) as! YNLeftCell
+            cell.nian = datasource[indexPath.row - 1].nian
             return cell
         }
     }
@@ -189,6 +200,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Scroll view delegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !shouldShow {
+           return
+        }
         let y = scrollView.contentOffset.y
         if isTextViewVisible { return }
         if y < 0 {
@@ -199,6 +213,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !shouldShow {
+            return
+        }
         if textView.transform.ty > 100 {
             isTextViewVisible = true
             UIView.animateWithDuration(0.225, animations: { () -> Void in
