@@ -174,6 +174,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 data!.writeToURL(path, atomically: true)
                 print(path)
                 
+//                let path = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String).stringByAppendingPathComponent(nian.strDate + ".png")
+//                data.writeToFile(path, atomically: true)
+//                nian.pic = path
             }
             YNDBTool.insertNian(nian)
             let nianF = YNNianFrame(nian: nian, index: index)
