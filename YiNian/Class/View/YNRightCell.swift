@@ -1,19 +1,19 @@
 //
-//  YNLeftCell.swift
+//  YNRightCell.swift
 //  YiNian
 //
-//  Created by 宏周 on 15/9/24.
-//  Copyright (c) 2015年 Mars. All rights reserved.
+//  Created by 周宏 on 15/9/26.
+//  Copyright © 2015年 Mars. All rights reserved.
 //
 
 import UIKit
 
-class YNLeftCell: UITableViewCell {
+class YNRightCell: UITableViewCell {
     
     @IBOutlet weak var labelTime: UILabel!
     
     @IBOutlet weak var labelContent: UILabel!
-
+    
     @IBOutlet weak var iv: UIImageView!
     
     @IBOutlet weak var ivBottom: NSLayoutConstraint!
@@ -53,10 +53,11 @@ class YNLeftCell: UITableViewCell {
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -64,5 +65,5 @@ class YNLeftCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

@@ -71,7 +71,7 @@ class YNDBTool {
         let db = FMDatabase(path: path)
         var array = Array<YNNian>()
         if db.open() {
-            let sql = "SELECT * FROM nian"
+            let sql = "SELECT * FROM nian ORDER BY date DESC"
             let rs = db.executeQuery(sql)
             if let rs = rs {
                 while rs.next() {

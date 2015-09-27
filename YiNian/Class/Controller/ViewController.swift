@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /// 输入试图
     @IBOutlet weak var textView: YNTextView!
     
-    var shouldShow = !YNDBTool.hasTodayInsert()
+//    var shouldShow = !YNDBTool.hasTodayInsert()
     
     /// 数据源数组
     var datasource: Array<YNNianFrame> = {
@@ -38,15 +38,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.   
         
-        
+        YNDBTool.createTable()
         self.setupTableView()
         self.setupTextView()
     }
     
     func setupTableView() {
-        tableView.registerClass(YNTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.registerNib(UINib(nibName: "YNTimeCell", bundle: nil), forCellReuseIdentifier: "time")
         tableView.registerNib(UINib(nibName: "YNLeftCell", bundle: nil), forCellReuseIdentifier: "left")
+        tableView.registerNib(UINib(nibName: "YNRightCell", bundle: nil), forCellReuseIdentifier: "right")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
 
@@ -107,8 +107,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.frame.size.width = UIScreen.mainScreen().bounds.width
             return cell
         } else if indexPath.row % 2 == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! YNTableViewCell
-            cell.nianF = datasource[indexPath.row - 1]
+            let cell = tableView.dequeueReusableCellWithIdentifier("right", forIndexPath: indexPath) as! YNRightCell
+            cell.nian = datasource[indexPath.row - 1].nian
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("left", forIndexPath: indexPath) as! YNLeftCell
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if indexPath.row == 0 {
             return 44
         } else {
-            return 200
+            return UITableViewAutomaticDimension
         }
     }
     
@@ -174,6 +174,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 data!.writeToURL(path, atomically: true)
                 print(path)
                 
+                nian.pic = nian.strDate + ".png"
 //                let path = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String).stringByAppendingPathComponent(nian.strDate + ".png")
 //                data.writeToFile(path, atomically: true)
 //                nian.pic = path
@@ -203,7 +204,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Scroll view delegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if !shouldShow {
+        if YNDBTool.hasTodayInsert() {
            return
         }
         let y = scrollView.contentOffset.y
@@ -216,9 +217,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !shouldShow {
-            return
-        }
         if textView.transform.ty > 100 {
             isTextViewVisible = true
             UIView.animateWithDuration(0.225, animations: { () -> Void in
