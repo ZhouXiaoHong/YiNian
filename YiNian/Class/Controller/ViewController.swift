@@ -80,6 +80,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     :param: lp lp
     */
     func long(lp: UILongPressGestureRecognizer) {
+        if !YNDBTool.hasTodayInsert() {
+            return
+        }
         if lp.state == UIGestureRecognizerState.Began {
             let point = lp.locationInView(tableView)
             if tableView.contentSize.height < point.y {
