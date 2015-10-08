@@ -54,6 +54,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let long = UILongPressGestureRecognizer(target: self, action: Selector("long:"))
         long.minimumPressDuration = 0.5
         tableView.addGestureRecognizer(long)
+        
+        // 双击手势
+        let doubleTap = UITapGestureRecognizer(target: self, action: Selector("doubleTap:"))
+        doubleTap.numberOfTapsRequired = 2
+        tableView.addGestureRecognizer(doubleTap)
     }
     
     func setupTextView() {
@@ -96,6 +101,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 YNDBTool.deleteTodayNian()
             }
         }
+    }
+    
+    func doubleTap(tap: UITapGestureRecognizer) {
+        let point = tap.locationInView(tableView)
+        if tableView.contentSize.height < point.y {
+            return
+        }
+        
+        let vc = UICollectionView(frame: view.bounds, collectionViewLayout: YNLayout())
+        vc.registerNib(UINib(nibName: "YNCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        view.addSubview(vc)
     }
     
     // MARK: - Table view delegate & data source

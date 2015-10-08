@@ -26,6 +26,10 @@
 		419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523A61B95F6B7005F7958 /* ViewController.swift */; };
 		419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419523A91B95F6B7005F7958 /* AppDelegate.swift */; };
 		A72B58B3905DD8F8E7B041D2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2590FADEFD62179248324F9 /* libPods.a */; };
+		D42A84561BBD579E0052EAE7 /* YNCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A84551BBD579E0052EAE7 /* YNCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D42A84581BBD58450052EAE7 /* YNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A84571BBD58450052EAE7 /* YNLayout.swift */; settings = {ASSET_TAGS = (); }; };
+		D42A845F1BBE25C70052EAE7 /* YNCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A845D1BBE25C70052EAE7 /* YNCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D42A84601BBE25C70052EAE7 /* YNCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D42A845E1BBE25C70052EAE7 /* YNCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		D43717CA1BB6C28400556F2A /* YNRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43717C81BB6C28400556F2A /* YNRightCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D43717CB1BB6C28400556F2A /* YNRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D43717C91BB6C28400556F2A /* YNRightCell.xib */; settings = {ASSET_TAGS = (); }; };
 		D4CA96971B9813660038FED3 /* haha.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CA96961B9813660038FED3 /* haha.png */; };
@@ -79,6 +83,10 @@
 		4FA74DC9D503B4F1708ED75B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9F2DC78307BBACF4B06C9D5D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A2590FADEFD62179248324F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D42A84551BBD579E0052EAE7 /* YNCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNCollectionViewController.swift; sourceTree = "<group>"; };
+		D42A84571BBD58450052EAE7 /* YNLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNLayout.swift; sourceTree = "<group>"; };
+		D42A845D1BBE25C70052EAE7 /* YNCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNCollectionViewCell.swift; sourceTree = "<group>"; };
+		D42A845E1BBE25C70052EAE7 /* YNCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNCollectionViewCell.xib; sourceTree = "<group>"; };
 		D43717C81BB6C28400556F2A /* YNRightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNRightCell.swift; sourceTree = "<group>"; };
 		D43717C91BB6C28400556F2A /* YNRightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNRightCell.xib; sourceTree = "<group>"; };
 		D4CA96961B9813660038FED3 /* haha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = haha.png; path = Class/View/haha.png; sourceTree = "<group>"; };
@@ -137,6 +145,8 @@
 				41279B971BB3762C00F13077 /* YNLeftCell.xib */,
 				D43717C81BB6C28400556F2A /* YNRightCell.swift */,
 				D43717C91BB6C28400556F2A /* YNRightCell.xib */,
+				D42A845D1BBE25C70052EAE7 /* YNCollectionViewCell.swift */,
+				D42A845E1BBE25C70052EAE7 /* YNCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				419523A61B95F6B7005F7958 /* ViewController.swift */,
+				D42A84551BBD579E0052EAE7 /* YNCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				419523A91B95F6B7005F7958 /* AppDelegate.swift */,
+				D42A84571BBD58450052EAE7 /* YNLayout.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -382,6 +394,7 @@
 				419523881B95E403005F7958 /* Images.xcassets in Resources */,
 				D43717CB1BB6C28400556F2A /* YNRightCell.xib in Resources */,
 				D4CA96971B9813660038FED3 /* haha.png in Resources */,
+				D42A84601BBE25C70052EAE7 /* YNCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,11 +448,13 @@
 				D4FE93B91B992D1B002CA4FC /* YNTextView.swift in Sources */,
 				D4FE94091B9A886E002CA4FC /* ImageCollectionViewCell.swift in Sources */,
 				D4FE940A1B9A886E002CA4FC /* ImagePickerCollectionView.swift in Sources */,
+				D42A84561BBD579E0052EAE7 /* YNCollectionViewController.swift in Sources */,
 				4157E2CA1B97C92F00C140C2 /* YNNian.swift in Sources */,
 				4112735E1B9DD14E006F45BC /* FMDatabaseVariadic.swift in Sources */,
 				419523AC1B95F6B7005F7958 /* AppDelegate.swift in Sources */,
 				D4FE94081B9A886E002CA4FC /* ImageAction.swift in Sources */,
 				D4FE940C1B9A886E002CA4FC /* ImagePreviewFlowLayout.swift in Sources */,
+				D42A845F1BBE25C70052EAE7 /* YNCollectionViewCell.swift in Sources */,
 				41615F861BA71C610050D071 /* YNImageTool.m in Sources */,
 				D4FE93B31B99142C002CA4FC /* YNDBTool.swift in Sources */,
 				4112735D1B9DD14E006F45BC /* FMDatabaseAdditionsVariadic.swift in Sources */,
@@ -453,6 +468,7 @@
 				411273591B9C7413006F45BC /* YNTableView.swift in Sources */,
 				419523AB1B95F6B7005F7958 /* ViewController.swift in Sources */,
 				D4FE94101B9A886E002CA4FC /* PreviewSupplementaryView.swift in Sources */,
+				D42A84581BBD58450052EAE7 /* YNLayout.swift in Sources */,
 				41279B9B1BB377DC00F13077 /* YNLeftCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
