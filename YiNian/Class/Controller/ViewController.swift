@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, YNTextViewDelegate, ImagePickerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, YNTextViewDelegate, ImagePickerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     /// 列表试图
     @IBOutlet weak var tableView: UITableView!
@@ -110,8 +110,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         let vc = UICollectionView(frame: view.bounds, collectionViewLayout: YNLayout())
+        vc.delegate = self
+        vc.dataSource = self
         vc.registerNib(UINib(nibName: "YNCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         view.addSubview(vc)
+    }
+    
+    // MARK: - Collectionview delegate and data source 
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        return 20
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! YNCollectionViewCell
+        
+        // Configure the cell
+        cell.contentLabel.text = String(indexPath.row)
+        
+        return cell
     }
     
     // MARK: - Table view delegate & data source
