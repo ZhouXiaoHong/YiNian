@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /// 输入试图
     @IBOutlet weak var textView: YNTextView!
     
+    var collectionView: UICollectionView?
+    
 //    var shouldShow = !YNDBTool.hasTodayInsert()
     
     /// 数据源数组
@@ -110,10 +112,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         let vc = UICollectionView(frame: view.bounds, collectionViewLayout: YNLayout())
+        let doubleTap = UITapGestureRecognizer(target: self, action: "collectionViewDoubleTap:")
+        doubleTap.numberOfTapsRequired = 2
+        collectionView = vc
+        vc.addGestureRecognizer(doubleTap)
         vc.delegate = self
         vc.dataSource = self
         vc.registerNib(UINib(nibName: "YNCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         view.addSubview(vc)
+    }
+    
+    func collectionViewDoubleTap(tap: UIGestureRecognizer) {
+        collectionView?.hidden = true
     }
     
     // MARK: - Collectionview delegate and data source 

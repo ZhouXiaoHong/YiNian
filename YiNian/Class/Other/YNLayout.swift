@@ -12,8 +12,8 @@ class YNLayout: UICollectionViewFlowLayout {
     override func prepareLayout() {
         scrollDirection = .Horizontal
         itemSize = CGSize(width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height)
-        minimumInteritemSpacing = 200
-        minimumLineSpacing = 200
+//        minimumInteritemSpacing = 200
+        minimumLineSpacing = 0
     }
     
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {

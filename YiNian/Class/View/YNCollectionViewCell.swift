@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol YNCollectionViewCellDelegate {
+    func collectionViewCellDidDoubleClick()
+}
+
 class YNCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var iv: UIImageView!
@@ -15,6 +19,8 @@ class YNCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var contentLabel: UILabel!
 
     @IBOutlet weak var timeLabel: UILabel!
+    
+    var delegate: YNCollectionViewCellDelegate?
     
     var nian: YNNian? {
         set {
@@ -39,6 +45,7 @@ class YNCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
 
 }
