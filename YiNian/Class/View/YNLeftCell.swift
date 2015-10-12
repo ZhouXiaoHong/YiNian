@@ -28,7 +28,6 @@ class YNLeftCell: UITableViewCell {
             if let nian = newValue {
                 labelContent.text = nian.text
                 labelTime.text = nian.strDate
-                iv.backgroundColor = UIColor.redColor()
                 if let pic = nian.pic {
                     let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(pic)
                     

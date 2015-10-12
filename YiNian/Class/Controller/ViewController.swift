@@ -126,14 +126,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 20
+        return self.datasource.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! YNCollectionViewCell
         
         // Configure the cell
-        cell.contentLabel.text = String(indexPath.row)
+        cell.nian = datasource[indexPath.row].nian
         
         return cell
     }

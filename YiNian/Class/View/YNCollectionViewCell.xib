@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,15 +14,19 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="314" height="462"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efV-Qm-UUU">
-                        <rect key="frame" x="252" y="421.5" width="42" height="20.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2a-WN-5Sz">
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="308"/>
+                        <animations/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xek-jy-rt7">
+                        <rect key="frame" x="20" y="318" width="42" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xek-jy-rt7">
-                        <rect key="frame" x="53" y="220" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efV-Qm-UUU">
+                        <rect key="frame" x="252" y="421" width="42" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -35,16 +40,22 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="efV-Qm-UUU" secondAttribute="trailing" constant="20" id="DEB-LO-2gR"/>
+                <constraint firstAttribute="trailing" secondItem="j2a-WN-5Sz" secondAttribute="trailing" id="GsV-f6-ZSP"/>
+                <constraint firstItem="j2a-WN-5Sz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="JBA-7J-MKE"/>
+                <constraint firstItem="xek-jy-rt7" firstAttribute="top" secondItem="j2a-WN-5Sz" secondAttribute="bottom" constant="10" id="NzT-gf-Ny7"/>
                 <constraint firstAttribute="bottom" secondItem="efV-Qm-UUU" secondAttribute="bottom" constant="20" id="R6A-cf-rzV"/>
-                <constraint firstItem="xek-jy-rt7" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jHz-MB-1G0"/>
-                <constraint firstAttribute="trailing" secondItem="xek-jy-rt7" secondAttribute="trailing" constant="214" id="ojb-IB-QTJ"/>
-                <constraint firstItem="xek-jy-rt7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="58" id="vXy-sD-4l5"/>
+                <constraint firstItem="j2a-WN-5Sz" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="2:3" id="VG3-qf-fsw"/>
+                <constraint firstItem="j2a-WN-5Sz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Z3O-kk-wYY"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xek-jy-rt7" secondAttribute="trailing" constant="20" id="Zbs-wK-qCf"/>
+                <constraint firstItem="xek-jy-rt7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="vXy-sD-4l5"/>
             </constraints>
             <size key="customSize" width="314" height="462"/>
             <connections>
                 <outlet property="contentLabel" destination="xek-jy-rt7" id="gip-rg-6hf"/>
+                <outlet property="iv" destination="j2a-WN-5Sz" id="UQ8-Kd-qVA"/>
+                <outlet property="timeLabel" destination="efV-Qm-UUU" id="WVa-M6-3gP"/>
             </connections>
-            <point key="canvasLocation" x="293" y="345"/>
+            <point key="canvasLocation" x="139" y="324"/>
         </collectionViewCell>
     </objects>
 </document>
