@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="314" height="308"/>
                         <animations/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xek-jy-rt7">
-                        <rect key="frame" x="20" y="318" width="42" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xek-jy-rt7">
+                        <rect key="frame" x="20" y="316" width="42" height="22.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,13 +44,22 @@
                 <constraint firstItem="j2a-WN-5Sz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="JBA-7J-MKE"/>
                 <constraint firstItem="xek-jy-rt7" firstAttribute="top" secondItem="j2a-WN-5Sz" secondAttribute="bottom" constant="10" id="NzT-gf-Ny7"/>
                 <constraint firstAttribute="bottom" secondItem="efV-Qm-UUU" secondAttribute="bottom" constant="20" id="R6A-cf-rzV"/>
+                <constraint firstItem="xek-jy-rt7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="200" id="UWd-17-v4L"/>
                 <constraint firstItem="j2a-WN-5Sz" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="2:3" id="VG3-qf-fsw"/>
                 <constraint firstItem="j2a-WN-5Sz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Z3O-kk-wYY"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xek-jy-rt7" secondAttribute="trailing" constant="20" id="Zbs-wK-qCf"/>
                 <constraint firstItem="xek-jy-rt7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="vXy-sD-4l5"/>
             </constraints>
             <size key="customSize" width="314" height="462"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="UWd-17-v4L"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="consIvHeight" destination="VG3-qf-fsw" id="sVh-UF-MLF"/>
+                <outlet property="consLabelTop" destination="NzT-gf-Ny7" id="JFr-Kh-9tr"/>
+                <outlet property="consLabelTopToCell" destination="UWd-17-v4L" id="qJM-qs-t1t"/>
                 <outlet property="contentLabel" destination="xek-jy-rt7" id="gip-rg-6hf"/>
                 <outlet property="iv" destination="j2a-WN-5Sz" id="UQ8-Kd-qVA"/>
                 <outlet property="timeLabel" destination="efV-Qm-UUU" id="WVa-M6-3gP"/>

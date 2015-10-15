@@ -20,6 +20,12 @@ class YNCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var consLabelTopToCell: NSLayoutConstraint!
+    
+    @IBOutlet weak var consLabelTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var consIvHeight: NSLayoutConstraint!
+    
     var delegate: YNCollectionViewCellDelegate?
     
     var nian: YNNian? {
@@ -32,7 +38,21 @@ class YNCollectionViewCell: UICollectionViewCell {
                     let data = NSData(contentsOfURL: path)
                     if let data = data {                        
                         self.iv.image = UIImage(data: data)
+                        self.iv.hidden = false
+                        self.consIvHeight.active = true
+                        self.consLabelTopToCell.active = false
+                        self.layoutIfNeeded()
+                    } else {
+                        self.iv.hidden = true
+                        self.consIvHeight.active = false
+                        self.consLabelTopToCell.active = true
+                        self.layoutIfNeeded()
                     }
+                } else {
+                    self.iv.hidden = true
+                    self.consIvHeight.active = false
+                    self.consLabelTopToCell.active = true
+                    self.layoutIfNeeded()
                 }
             }
         }

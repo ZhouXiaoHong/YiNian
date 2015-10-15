@@ -110,16 +110,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if tableView.contentSize.height < point.y {
             return
         }
+        let indexPath = tableView.indexPathForRowAtPoint(point)
         
         let vc = UICollectionView(frame: view.bounds, collectionViewLayout: YNLayout())
         let doubleTap = UITapGestureRecognizer(target: self, action: "collectionViewDoubleTap:")
         doubleTap.numberOfTapsRequired = 2
         collectionView = vc
+        vc.showsHorizontalScrollIndicator = false
         vc.addGestureRecognizer(doubleTap)
         vc.delegate = self
         vc.dataSource = self
         vc.registerNib(UINib(nibName: "YNCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         view.addSubview(vc)
+        vc.scrollToItemAtIndexPath(NSIndexPath(forItem: (indexPath!.item - 1), inSection: 0), atScrollPosition: .Left, animated: false)
     }
     
     func collectionViewDoubleTap(tap: UIGestureRecognizer) {
